@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gymmy | Treinos Personalizados</title>
+
+  <link rel="shortcut icon" href="/images/icons/dumbbell.png">
+
+  <link rel="stylesheet" href="/styles/main.css">
+  <link rel="stylesheet" href="/styles/partials/header.css">
+  <link rel="stylesheet" href="/styles/partials/forms.css">
+  <link rel="stylesheet" href="/styles/partials/page-treinar.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body id="page-treinar">
+
+  <div id="container">
+
+    <header class="page-header">
+
+      <div class="top-bar-container">
+        <a href="/">
+          <img src="/images/SVG/arrowback2.svg" alt="voltar">
+        </a>
+        <img src="/images/SVG/LogoGymmy2.svg" alt="Gymmy">
+      </div>
+
+      <div class="header-content">
+        <strong>Esses são as(os) profissionais disponíveis</strong>
+        <form id="search-teachers">
+          
+          <div class="select-block">
+            <label for="subject">Foco do treino</label>
+            <select name="subject" id="subject">
+              <option value="" disabled="" hidden="">Selecione uma opção</option>
+
+              {%for subject in subjects%}
+                <option value="{{loop.index0}}" {{"selected" if filters.subject == loop.index0}}>
+                  {{subject}}
+                </option>
+              {%endfor%}
+              
+            </select>
+          </div>
+
+          <div class="select-block">
+            <label for="weekday">Dia da semana</label>
+            <select name="weekday" id="weekday">
+              <option value="" disabled="" hidden="">Selecione uma opção</option>
+              
+              {%for weekday in weekdays%}
+                <option value="{{loop.index0}}" {{"selected" if filters.weekday == loop.index0}}>
+                  {{weekday}}
+                </option>
+              {%endfor%}
+              
+            </select>
+          </div>
+          <div class="input-block">
+            <label for="time">Horário do treino</label>
+            <input name="time" id="time" type="time" value="{{filters.time}}">
+          </div>
+          <button type="submit">Filtrar</button>
+        </form>
+      </div>
+
+    </header>
+
+    <main>
+
+      {% if gymmys == "" %}
+
+        <p class="no-results">Não encontramos profissionais disponíveis para sua pesquisa</p>
+
+      {% else %}
+
+        {% for gimmy in gymmys %}
+            <article class="teacher-item">
+              <header>
+              <img src="{{gimmy.avatar}}" alt="{{gimmy.name}}">
+
+              <div>
+                <strong>{{gimmy.name}}</strong>
+                <span>{{gimmy.subject}}</span>
+              </div>
+              </header>
+
+              <p>{{gimmy.bio}}</p>
+
+              <footer>
+                <p>Preço/hora<strong>R$ {{gimmy.cost}}</strong></p>
+                <a href="https://api.whatsapp.com/send?1=pt_BR&phone=55{{gimmy.whatsapp}}&text=Olá {{gimmy.name}}, tenho interesse na sua aula de {{gimmy.subject}}" class="button" target="_blank">
+                  <img src="/images/SVG/whatsapp.svg" alt="whatsapp">ENTRAR EM CONTATO
+                </a>
+              </footer>
+            </article>
+        {% endfor %}
+      
+      {% endif %}
+
+    </main>
+
+  </div>
+
+</body>
+
+</html>

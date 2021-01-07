@@ -1,0 +1,45 @@
+
+.input-block input, 
+.select-block select,
+.textarea-block textarea {
+  width: 100%;
+  height: 5.6rem;
+  margin-top: 0.8rem;
+  border-radius: 0.8rem;
+  border: 1px solid rgb(179, 179, 179);
+  outline: 0;
+  padding: 0 1.6rem;
+  font-size: 1.6rem;
+  background-color: #f0f5ff;
+}
+
+.textarea-block textarea {
+  resize: vertical;
+}
+
+#create-class fieldset label {
+  color: rgb(152, 152, 152);
+}
+
+/* .input-block {
+  position: relative;
+}
+
+.input-block:focus-within::after {
+  content: "";
+
+  width: calc(100% - 3.2rem);
+  height: 4px;
+  background: var(--color-lightblue-hover);
+
+  position: absolute;
+  left: 1.6rem;
+  bottom: 0;
+} */
+
+.input-block input:hover, 
+.select-block select:hover,
+.textarea-block textarea:hover {
+  border: 2px solid var(--color-lightblue-hover);
+
+}

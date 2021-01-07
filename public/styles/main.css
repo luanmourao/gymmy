@@ -1,0 +1,52 @@
+:root {
+  --color-darkblue: #0D1440;
+  --color-red: #8e1027;
+  --color-red-hover: #d2193b;
+  --color-lightblue: #0c3c9d;
+  --color-lightblue-hover: #155be6;
+  --color-middleblue: #0E2773;
+  --color-text: #e8e5e5;
+
+  font-size: 60%;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100vh;
+}
+
+body {
+  color: var(--color-text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+body, button {
+  font: 600 1.6rem Poppins;
+  color: var(--color-text);
+}
+
+#container {
+  width: 90vw;
+  max-width: 700px;
+}
+
+#redButton {
+  background-color: var(--color-red);
+}
+
+#blueButton {
+  background-color: var(--color-lightblue);
+}
+
+@media (min-width: 700px){
+  :root {
+    font-size: 62.5%;
+  }
+}

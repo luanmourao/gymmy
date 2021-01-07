@@ -1,0 +1,134 @@
+:root {
+  --color-darkblue: #0D1440;
+  --color-red: #8e1027;
+  --color-red-hover: #d2193b;
+  --color-lightblue: #0c3c9d;
+  --color-lightblue-hover: #155be6;
+  --color-middleblue: #0E2773;
+  --color-text: #e8e5e5;
+
+  font-size: 40%;
+}
+
+#page-landing {
+  background-image: url(/images/gimmyBG.jpg);
+}
+
+.logo-container {
+  text-align: center;
+  margin-bottom: 3.2rem;
+}
+
+.logo-container img {
+  height: 10rem;
+}
+
+.logo-container h2 {
+  font-weight: 200;
+  font-size: 3.6rem;
+  line-height: 4.6rem;
+  margin-top: 1.5rem;
+  margin-left: 1.5rem;
+}
+
+.hero-image {
+  width: 100%;
+  height: 35rem;
+}
+
+.buttons-container {
+  display: flex;
+  justify-content: center;
+  margin: 3.2rem 0;
+}
+
+.buttons-container a {
+  width: 30rem;
+  height: 10.4rem;
+  border-radius: 0.8rem;
+  font: 700 2.4rem Poppins;
+  text-decoration: none;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: background 0.4s;
+
+  color: var(--color-text);
+}
+
+.buttons-container a.treinar {
+  background-color: var(--color-lightblue);
+  margin-right: 1.6rem;
+}
+
+.buttons-container a.treinar:hover{
+  background-color: var(--color-lightblue-hover);
+}
+
+.buttons-container a.dar-aula {
+  background-color: var(--color-red);
+}
+
+.buttons-container a.dar-aula:hover{
+  background-color: var(--color-red-hover);
+}
+
+.total-connections {
+  font-size: 1.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.total-connections img {
+  margin-left: 0.8rem;
+}
+
+/* @media (max-width: 699px){
+  :root {
+    font-size: 40%;
+  }
+} */
+
+@media (min-width: 1100px){
+  #page-landing #container {
+    max-width: 1100px;
+    display: grid;
+    grid-template-columns: 2fr 1fr 2fr;
+    grid-template-rows: 350px 1fr;
+    grid-template-areas: 
+      "gymmy image image" 
+      "button button text";
+    gap: 60px;
+  }
+
+  .logo-container {
+    grid-area: gymmy;
+    text-align: initial;
+    align-self: center;
+  }
+
+  .hero-image {
+    grid-area: image;
+    padding-bottom: 10rem;
+    height: 100rem;
+  }
+
+  .buttons-container {
+    grid-area: button;
+    justify-content: flex-start;
+  }
+
+  .total-connections {
+    grid-area: text;
+    justify-self: end;
+    align-items: flex-end;
+  }
+
+  .logo-container img {
+    height: 100%;
+  }
+
+}
