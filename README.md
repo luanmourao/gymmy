@@ -12,3 +12,10 @@ Os alunos fazem o filtro, informando o tipo de treino, dia e hora que desejam, o
 
 **Status** </br>
 Em desenvolvimento
+
+**Tecnologias**</br>
+- Javascript
+- CSS
+- HTML5
+- Nunjucks (template engine)
+- SQLite (banco de dados)
