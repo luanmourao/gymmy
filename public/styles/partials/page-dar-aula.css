@@ -39,11 +39,6 @@
   margin-top: 6.4rem;
 }
 
-/* #page-dar-aula fieldset .input-block,
-#page-dar-aula fieldset .textarea-block {
-  color: black;
-} */
-
 #page-dar-aula .input-block+.input-block,
 #page-dar-aula .input-block+.textarea-block,
 #page-dar-aula .select-block+.input-block {

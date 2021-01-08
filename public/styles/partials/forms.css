@@ -21,22 +21,6 @@
   color: rgb(152, 152, 152);
 }
 
-/* .input-block {
-  position: relative;
-}
-
-.input-block:focus-within::after {
-  content: "";
-
-  width: calc(100% - 3.2rem);
-  height: 4px;
-  background: var(--color-lightblue-hover);
-
-  position: absolute;
-  left: 1.6rem;
-  bottom: 0;
-} */
-
 .input-block input:hover, 
 .select-block select:hover,
 .textarea-block textarea:hover {

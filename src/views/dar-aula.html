@@ -21,123 +21,118 @@
 
 <body id="page-dar-aula">
 
-  <div id="container">
+      <div id="container">
 
-    <header class="page-header">
+        <header class="page-header">
 
-      <div class="top-bar-container">
-        <a href="/">
-          <img src="/images/SVG/arrowback2.svg" alt="voltar">
-        </a>
-        <img src="/images/SVG/LogoGymmy2.svg" alt="Gymmy">
+          <div class="top-bar-container">
+            <a href="/">
+              <img src="/images/SVG/arrowback2.svg" alt="voltar">
+            </a>
+            <img src="/images/SVG/LogoGymmy2.svg" alt="Gymmy">
+          </div>
+
+          <div class="header-content">
+            <strong>Ótimo, vai ser uma experiência incrível!</strong>
+            <p>Para se cadastrar e começar a dar suas aulas, preencha o formulário de inscrição</p>
+          </div>
+
+        </header>
+
+        <main>
+            <form action="/save-classes" id="create-class" method="POST">
+
+              <fieldset>
+                <legend>Seus Dados</legend>
+
+                <div class="input-block">
+                  <label for="name">Nome completo</label>
+                  <input name="name" id="name" required>
+                </div>
+
+                <div class="input-block">
+                  <label for="avatar">Link da sua foto <small>(comece com https://)</small></label>
+                  <input name="avatar" id="avatar" type="url" required>
+                </div>
+
+                <div class="input-block">
+                  <label for="whatsapp">Whatsapp <small>(somente números)</small></label>
+                  <input type="number" name="whatsapp" id="whatsapp" required>
+                </div>
+
+                <div class="textarea-block">
+                  <label for="bio">Biografia</label>
+                  <textarea name="bio" id="bio" required></textarea>
+                </div>
+              </fieldset>
+
+              <fieldset>
+                <legend>Sobre a aula</legend>
+
+                <div class="select-block">
+                  <label for="subject">Especialidade</label>
+                  <select name="subject" id="subject" required>
+                    <option value="">Selecione uma opção</option>
+
+                    {% for subject in subjects %}
+                      <option value="{{loop.index0}}">{{subject}}</option>
+                    {% endfor %}
+
+                  </select>
+                </div>
+
+                <div class="input-block">
+                  <label for="cost">Custo da sua hora/aula 
+                    <small>(R$)</small>
+                  </label>
+                  <input name="cost" id="cost" type="number" required>
+                </div>
+              </fieldset>
+
+              <fieldset id="schedule-itens">
+                <legend>Horários disponíveis
+                  <button type="button" id="add-time">+ Novo Horário</button>
+                </legend>
+
+                <div class="schedule-item">
+
+                  <div class="select-block">
+                    <label for="weekday">Dia da semana</label>
+                    <select name="weekday[]" required>
+                      <option value="">Selecione uma opção</option>
+
+                      {%for weekday in weekdays%}
+                        <option value="{{loop.index0}}">{{weekday}}</option>
+                      {%endfor%}
+
+                    </select>
+                  </div>
+
+                  <div class="input-block">
+                    <label for="time_from">das</label>
+                    <input type="time" name="time_from[]" required>
+                  </div>
+
+                  <div class="input-block">
+                    <label for="time_to">até</label>
+                    <input type="time" name="time_to[]" required>
+                  </div>
+
+                </div>
+              </fieldset>
+
+            </form>
+
+            <footer>
+              <p>
+                <img src="/images/icons/warning.png" alt="Aviso importante">
+                Preencha todos os dados
+              </p>
+              <button type="submit" form="create-class">SALVAR CADASTRO</button>
+            </footer>
+        </main>
+
       </div>
-
-      <div class="header-content">
-        <strong>Ótimo, vai ser uma experiência incrível!</strong>
-        <p>Para se cadastrar e começar a dar suas aulas, preencha o formulário de inscrição</p>
-      </div>
-
-    </header>
-
-    <main>
-      <form action="/save-classes" id="create-class" method="POST">
-
-        <fieldset>
-          <legend>Seus Dados</legend>
-
-          <div class="input-block">
-            <label for="name">Nome completo</label>
-            <input name="name" id="name" required>
-          </div>
-
-          <div class="input-block">
-            <label for="avatar">Link da sua foto <small>(comece com https://)</small></label>
-            <input name="avatar" id="avatar" type="url" required>
-          </div>
-
-          <div class="input-block">
-            <label for="whatsapp">Whatsapp <small>(somente números)</small></label>
-            <input type="number" name="whatsapp" id="whatsapp" required>
-          </div>
-
-          <div class="textarea-block">
-            <label for="bio">Biografia</label>
-            <textarea name="bio" id="bio" required></textarea>
-          </div>
-        </fieldset>
-
-        <fieldset>
-          <legend>Sobre a aula</legend>
-
-          <div class="select-block">
-            <label for="subject">Especialidade</label>
-            <select name="subject" id="subject" required>
-              <option value="">Selecione uma opção</option>
-
-              {%for subject in subjects%}
-
-                <option value="{{loop.index0}}">{{subject}}</option>
-
-              {%endfor%}
-
-            </select>
-          </div>
-
-          <div class="input-block">
-            <label for="cost">Custo da sua hora/aula 
-              <small>(R$)</small>
-            </label>
-            <input name="cost" id="cost" type="number" required>
-          </div>
-        </fieldset>
-
-        <fieldset id="schedule-itens">
-          <legend>Horários disponíveis
-            <button type="button" id="add-time">+ Novo Horário</button>
-          </legend>
-
-          <div class="schedule-item">
-
-            <div class="select-block">
-              <label for="weekday">Dia da semana</label>
-              <select name="weekday[]" required>
-                <option value="">Selecione uma opção</option>
-
-                {%for weekday in weekdays%}
-
-                  <option value="{{loop.index0}}">{{weekday}}</option>
-
-                {%endfor%}
-
-              </select>
-            </div>
-
-            <div class="input-block">
-              <label for="time_from">das</label>
-              <input type="time" name="time_from[]" required>
-            </div>
-
-            <div class="input-block">
-              <label for="time_to">até</label>
-              <input type="time" name="time_to[]" required>
-            </div>
-
-          </div>
-
-        </fieldset>
-
-      </form>
-
-      <footer>
-        <p>
-          <img src="/images/icons/warning.png" alt="Aviso importante">
-          Preencha todos os dados
-        </p>
-        <button type="submit" form="create-class">SALVAR CADASTRO</button>
-      </footer>
-    </main>
-
-  </div>
 
 </body>
 

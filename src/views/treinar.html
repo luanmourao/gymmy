@@ -30,42 +30,44 @@
       </div>
 
       <div class="header-content">
-        <strong>Esses são as(os) profissionais disponíveis</strong>
-        <form id="search-teachers">
-          
-          <div class="select-block">
-            <label for="subject">Foco do treino</label>
-            <select name="subject" id="subject">
-              <option value="" disabled="" hidden="">Selecione uma opção</option>
+          <strong>Esses são as(os) profissionais disponíveis</strong>
+          <form id="search-teachers">
+            
+            <div class="select-block">
+              <label for="subject">Foco do treino</label>
+              <select name="subject" id="subject">
+                <option value="" disabled="" hidden="">Selecione uma opção</option>
 
-              {%for subject in subjects%}
-                <option value="{{loop.index0}}" {{"selected" if filters.subject == loop.index0}}>
-                  {{subject}}
-                </option>
-              {%endfor%}
-              
-            </select>
-          </div>
+                {%for subject in subjects%}
+                  <option value="{{loop.index0}}" {{"selected" if filters.subject == loop.index0}}>
+                    {{subject}}
+                  </option>
+                {%endfor%}
+                
+              </select>
+            </div>
 
-          <div class="select-block">
-            <label for="weekday">Dia da semana</label>
-            <select name="weekday" id="weekday">
-              <option value="" disabled="" hidden="">Selecione uma opção</option>
-              
-              {%for weekday in weekdays%}
-                <option value="{{loop.index0}}" {{"selected" if filters.weekday == loop.index0}}>
-                  {{weekday}}
-                </option>
-              {%endfor%}
-              
-            </select>
-          </div>
-          <div class="input-block">
-            <label for="time">Horário do treino</label>
-            <input name="time" id="time" type="time" value="{{filters.time}}">
-          </div>
-          <button type="submit">Filtrar</button>
-        </form>
+            <div class="select-block">
+              <label for="weekday">Dia da semana</label>
+              <select name="weekday" id="weekday">
+                <option value="" disabled="" hidden="">Selecione uma opção</option>
+                
+                {%for weekday in weekdays%}
+                  <option value="{{loop.index0}}" {{"selected" if filters.weekday == loop.index0}}>
+                    {{weekday}}
+                  </option>
+                {%endfor%}
+                
+              </select>
+            </div>
+
+            <div class="input-block">
+              <label for="time">Horário do treino</label>
+              <input name="time" id="time" type="time" value="{{filters.time}}">
+            </div>
+            
+            <button type="submit">Filtrar</button>
+          </form>
       </div>
 
     </header>
