@@ -1,7 +1,5 @@
-const db = require('./database/db')
 const Database = require('./database/db')
 
-// importando o objeto "format.js" de modo desestruturado, ou seja, importando cada objeto individualmente e já armazenando-os em variáveis de mesmo nome
 const { subjects, weekdays, getSubject, convertHoursToMinutes } = require('./utils/format')
 
 function pageLanding(req, res){
@@ -15,7 +13,6 @@ async function pageTreinar(req, res){
     return res.render("treinar.html", { filters, subjects, weekdays })
   }
 
-  // converter horas em minutos
   const timeToMinutes = convertHoursToMinutes(filters.time)
 
   const query = `
@@ -33,17 +30,15 @@ async function pageTreinar(req, res){
     AND classes.subject = '${filters.subject}' 
 `  
 
-  // try - catch caso haja erro na consulta do banco de dados
   try {
-    const db = await Database
-    const gymmys = await db.all(query)
-    console.log(gymmys)
+      const db = await Database
+      const gymmys = await db.all(query)
 
-    gymmys.map((gymmy) => {
-      gymmy.subject = getSubject(gymmy.subject)
-    })
+      gymmys.map((gymmy) => {
+        gymmy.subject = getSubject(gymmy.subject)
+      })
 
-    return res.render("treinar.html", { gymmys, subjects, filters, weekdays })
+      return res.render("treinar.html", { gymmys, subjects, filters, weekdays })
 
   } catch (error) {
       console.log(error)

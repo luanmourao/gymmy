@@ -36,7 +36,7 @@ Database.then(async (db) => {
   // consultar dados inseridos 
 
   // todos os gymmys
-  const selectedGymmys = await db.all("SELECT * FROM gymmys") // aspas duplas porque o comando tem apenas uma linha
+  const selectedGymmys = await db.all("SELECT * FROM gymmys") 
   // console.log(selectedGymmys)
 
   // consultar as classes de um determinado professor e trazer junto os dados desse professor, relacionando a tabela gymmys e a tabela classes

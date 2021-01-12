@@ -1,7 +1,5 @@
-// lógica para criação dos gymmys
-// como precisaremos usar a lógica deste arquivo no db.js, devemos exportá-lo já neste início
 module.exports = async function(db, { gymmyValue, classValue, classScheduleValues }){
-  // inserir dados na tabela gymmys 
+
   const insertedGymmy = await db.run(`
     INSERT INTO gymmys (
         name,
@@ -18,7 +16,6 @@ module.exports = async function(db, { gymmyValue, classValue, classScheduleValue
 
   const gymmy_id = insertedGymmy.lastID 
 
-  // inserir dados na tabela classes
   const insertedClass = await db.run(`
       INSERT INTO classes (
           subject,
@@ -32,8 +29,7 @@ module.exports = async function(db, { gymmyValue, classValue, classScheduleValue
   `)
 
   const class_id = insertedClass.lastID
-
-  //inserir dados na tabela class_schedule 
+ 
   const insertedAllClassScheduleValues = classScheduleValues.map((classScheduleValue) => {
     return db.run(`
       INSERT INTO class_schedule (
@@ -50,6 +46,5 @@ module.exports = async function(db, { gymmyValue, classValue, classScheduleValue
     `)
   })
 
-  // executando todos os db.runs() das class_schedule
   await Promise.all(insertedAllClassScheduleValues)
 }

@@ -2,7 +2,6 @@ const Database = require('sqlite-async')
 
 function execute(db){
   
-  // criando as tabelas do banco de dados
   return db.exec(`
     CREATE TABLE IF NOT EXISTS gymmys (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
