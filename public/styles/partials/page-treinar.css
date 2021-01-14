@@ -202,4 +202,29 @@
   .teacher-item footer button img {
     margin-right: 16px;
   }
+
+  /* ------------------- MODAL DO CADASTRO ---------------------*/
+
+  #container #modalOverlay {
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.8);
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    text-align: center;
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  #container .modalSucess {
+    background-color: lightpink;
+    display: inline-block;
+    margin: 50vh auto;
+  }
+
+  #container #modalOverlay.active {
+    opacity: 1;
+    visibility:visible;
+  }
 }

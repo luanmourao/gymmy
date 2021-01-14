@@ -2,6 +2,8 @@ const Database = require('./database/db')
 
 const { subjects, weekdays, getSubject, convertHoursToMinutes } = require('./utils/format')
 
+let filters;
+
 function pageLanding(req, res){
   return res.render("index.html")
 }
@@ -50,27 +52,32 @@ function pageDarAula(req, res){
   return res.render("dar-aula.html", { subjects, weekdays })
 }
 
+function renderModal(req, res){
+  filters = req.body
+  return res.render("modal.html")
+}
+
 async function saveClasses(req, res){
   const createGymmy = require('./database/createGymmy')
 
   const gymmyValue = {
-    name: req.body.name,
-    avatar: req.body.avatar,
-    whatsapp: req.body.whatsapp,
-    bio: req.body.bio
+    name: filters.name,
+    avatar: filters.avatar,
+    whatsapp: filters.whatsapp,
+    bio: filters.bio
   }
 
   const classValue = {
-    subject: req.body.subject,
-    cost: req.body.cost
+    subject: filters.subject,
+    cost: filters.cost
   }
 
-  const classScheduleValues = req.body.weekday.map((weekday, index) => {
+  const classScheduleValues = filters.weekday.map((weekday, index) => {
 
     return {
       weekday,
-      time_from: convertHoursToMinutes(req.body.time_from[index]),
-      time_to: convertHoursToMinutes(req.body.time_to[index])
+      time_from: convertHoursToMinutes(filters.time_from[index]),
+      time_to: convertHoursToMinutes(filters.time_to[index])
     }
 
   })
@@ -80,9 +87,9 @@ async function saveClasses(req, res){
       await createGymmy(db, { gymmyValue, classValue, classScheduleValues })
 
       // configurando a query string para que o usuário, ao ser redirecionado, saiba pela url que seus filtros foram aplicados e aquilo que está sendo exibido é o resultado adequado
-      let queryString = "?subject=" + req.body.subject
-      queryString += "&weekday=" + req.body.weekday[0]
-      queryString += "&time=" + req.body.time_from[0]
+      let queryString = "?subject=" + filters.subject
+      queryString += "&weekday=" + filters.weekday[0]
+      queryString += "&time=" + filters.time_from[0]
       
       return res.redirect("/treinar" + queryString)
 
@@ -96,5 +103,6 @@ module.exports = {
   pageLanding,
   pageTreinar,
   pageDarAula,
-  saveClasses
+  saveClasses,
+  renderModal
 }
