@@ -6,17 +6,72 @@
   top: 0;
   left: 0;
   text-align: center;
-  /* opacity: 0;
-  visibility: hidden; */
 }
 
 .modalSucess {
-  background-color: lightpink;
-  display: inline-block;
-  margin: 50vh auto;
+  background-color: rgb(179,179,179);
+  max-width: 80vw;
+  height: 60vh;
+  margin: 10px auto;
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgb(2, 182, 2);
+  color: var(--color-darkblue);
+  font-size: 1.8rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
 }
 
-/* #modalOverlay.active {
-  opacity: 1;
-  visibility:visible;
-} */
+.modalSucess img {
+  width: 180px;
+  height: 180px;
+}
+
+.modalSucess p {
+  max-width: 250px;
+}
+
+.card {
+  position: relative;
+  max-width: 95vw;
+  height: 70vh;
+  margin: 20vh auto;
+  padding-top: 30px;
+}
+
+#exitButton {
+  font-size: 4rem;
+  font-weight: bold;
+  cursor: pointer;
+  position: absolute;
+  right: 0;
+  top: 0;
+  margin-top: 0;
+}
+
+@media (min-width: 500px){
+  .modalSucess {
+    background-color: rgb(179,179,179);
+    width: 400px;
+    height: 500px;
+    margin: 20px 20px;
+  }
+
+  .card {
+    position: relative;
+    width: 500px;
+    height: 600px;
+    margin: 20vh auto;
+    padding-top: 30px;
+  }
+}
+
+@media (max-width: 300px){
+  .modalSucess img {
+    width: 100px;
+    height: 100px;
+  }
+}
