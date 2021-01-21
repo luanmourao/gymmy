@@ -57,6 +57,12 @@
   transform: translateX(-15px);
 }
 
+#schedule-itens span {
+  font-size: 1rem;
+  font-weight: lighter;
+  color: red;
+}
+
 #page-dar-aula main footer {
   background-color: #f0f5ff;
   margin-top: 6rem;
