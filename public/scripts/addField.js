@@ -1,15 +1,17 @@
- document.querySelector("#add-time")
-  .addEventListener("click", checkField)
+ document
+    .querySelector("#add-time")
+    .addEventListener("click", checkField)
 
 function checkField(){
 
   const fieldset = document.getElementById("schedule-itens");
 
   const inputs = document
-                  .querySelector(".schedule-item")
-                  .querySelectorAll('input'); 
+                    .querySelector(".schedule-item")
+                    .querySelectorAll('input'); 
 
   const selectWeekday = document.querySelector('.weekday');
+
 
   if (fieldset.lastElementChild.textContent == "Preencha todos os campos para inserir um novo horário"){
     fieldset.removeChild(fieldset.lastElementChild);

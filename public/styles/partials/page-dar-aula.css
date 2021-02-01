@@ -57,6 +57,18 @@
   transform: translateX(-15px);
 }
 
+#page-dar-aula #create-class #exclude-time {
+  background: none;
+  border: none;
+  cursor: pointer;
+  height: 25px;
+  width: 25px;
+
+  align-self: flex-end;
+  justify-self: center;
+  margin-bottom: 17px;
+}
+
 #schedule-itens span {
   font-size: 1rem;
   font-weight: lighter;
@@ -130,8 +142,13 @@
 
   .schedule-item {
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-columns: 2fr 1fr 1fr 0.3fr;
     column-gap: 1.6rem;
+  }
+
+  .schedule-item img {
+    height: 25px;
+    width: 25px;
   }
 
   #page-dar-aula #schedule-itens .select-block+.input-block,
