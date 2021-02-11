@@ -7,10 +7,12 @@ function checkField(){
   const fieldset = document.getElementById("schedule-itens");
 
   const inputs = document
-                    .querySelector(".schedule-item")
+                    .querySelectorAll(".schedule-item")[document.querySelectorAll(".schedule-item").length-1]
                     .querySelectorAll('input'); 
 
-  const selectWeekday = document.querySelector('.weekday');
+  const selectWeekday = document
+                          .querySelectorAll(".schedule-item")[document.querySelectorAll(".schedule-item").length-1]
+                          .querySelector('.weekday');
 
 
   if (fieldset.lastElementChild.textContent == "Preencha todos os campos para inserir um novo horário"){
@@ -36,6 +38,10 @@ function createSpan(){
 
 function cloneField(){
   const newfieldContainer = document.querySelector(".schedule-item").cloneNode(true);
+
+  let excludeBT = newfieldContainer.querySelector("button");
+
+  excludeBT.id = `exclude-time${document.querySelectorAll(".schedule-item").length}`;
 
   const fields = newfieldContainer.querySelectorAll('input');
   

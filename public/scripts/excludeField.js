@@ -7,7 +7,7 @@ function excludeField(){
   const hasSibling = document.querySelector(".schedule-item").nextElementSibling; 
 
   if (hasSibling){
-    document.querySelector(".schedule-item").remove()
+    document.getElementById("exclude-time").parentNode.remove();
   } else {
     console.log("não tem irmão")
   }

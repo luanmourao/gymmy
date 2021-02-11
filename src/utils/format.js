@@ -33,7 +33,7 @@ function convertHoursToMinutes(time){
   return Number((hours * 60) + minutes)
 }
 
-convertHoursToMinutes("09:00")
+// convertHoursToMinutes("09:00")
 
 module.exports = {
   subjects,
